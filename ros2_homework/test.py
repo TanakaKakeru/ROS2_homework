@@ -11,8 +11,8 @@ def get_logged_in_users_info():
         if len(parts) >= 5: #要素が五個以上なら(正常動作なら)
             user = parts[0]  # ユーザー名
             terminal = parts[1]  # ログイン媒体.
-            ip_address = parts[2] if '(' in parts[2] else None  # IPアドレス
-            login_time = ' '.join(parts[3:5])  # ログイン時刻
+            login_time = ' '.join(parts[2:4])  # ログイン時刻
+            ip_address = parts[4] #if '(' in parts[4] else None  # IPアドレス
             users_info.append({
                 "user": user,
                 "terminal": terminal,
@@ -25,4 +25,4 @@ def get_logged_in_users_info():
 # 結果を取得して表示
 info = get_logged_in_users_info()
 for entry in info:
-    print(f"User: {entry['user']}, Terminal: {entry['terminal']}, IP: {entry['ip_address']}, Login Time: {entry['login_time']}")
+    print(f"User: {entry['user']}, Terminal: {entry['terminal']}, Login Time: {entry['login_time']}, IP: {entry['ip_address']}")
